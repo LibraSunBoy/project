@@ -1,0 +1,9 @@
+com\sunnice\generator\assist\CommonResult.class
+com\sunnice\generator\entity\PmsSkuStockExample$Criteria.class
+com\sunnice\generator\Generator.class
+com\sunnice\generator\entity\PmsSkuStockExample$GeneratedCriteria.class
+com\sunnice\generator\entity\PmsSkuStockExample.class
+com\sunnice\generator\mapper\PmsSkuStockMapper.class
+com\sunnice\generator\entity\PmsSkuStockExample$Criterion.class
+com\sunnice\generator\CommentGenerator.class
+com\sunnice\generator\entity\PmsSkuStock.class
