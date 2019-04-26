@@ -16,6 +16,9 @@ import java.util.List;
  */
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
+
+    private final static int DEFAULT_PASSWORD=000000;
+
     @Autowired
     private UmsAdminMapper adminMapper;
     @Override
@@ -23,5 +26,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         PageHelper.startPage(pageNum,pageSize);
         List<UmsAdmin> umsAdmins = adminMapper.selectByExample(new UmsAdminExample());
         return umsAdmins;
+    }
+
+    @Override
+    public int resetPassword(Long adminId) {
+        UmsAdmin admin = new UmsAdmin();
+        admin.setId(adminId);
+        admin.setPassword("");
+        return adminMapper.updateByPrimaryKeySelective(admin);
     }
 }
