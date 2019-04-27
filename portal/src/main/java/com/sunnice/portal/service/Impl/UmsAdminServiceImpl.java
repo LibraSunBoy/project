@@ -1,6 +1,7 @@
 package com.sunnice.portal.service.Impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.util.StringUtil;
 import com.sunnice.generator.entity.UmsAdmin;
 import com.sunnice.generator.entity.UmsAdminExample;
 import com.sunnice.generator.mapper.UmsAdminMapper;
@@ -30,9 +31,11 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int resetPassword(Long adminId) {
-        UmsAdmin admin = new UmsAdmin();
-        admin.setId(adminId);
-        admin.setPassword("");
-        return adminMapper.updateByPrimaryKeySelective(admin);
+        if (StringUtil.isNotEmpty(adminId.toString())){
+            UmsAdmin admin = new UmsAdmin();
+            admin.setId(adminId);
+            admin.setPassword("");
+            return adminMapper.updateByPrimaryKeySelective(admin);
+        }
     }
 }

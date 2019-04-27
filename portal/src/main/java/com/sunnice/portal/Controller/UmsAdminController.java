@@ -27,7 +27,7 @@ public class UmsAdminController {
     private UmsAdminService adminService;
 
     @ApiOperation("后台用户列表查询")
-    @RequestMapping(value = "/queryList",method = RequestMethod.POST)
+    @RequestMapping(value = "/queryList",method = RequestMethod.GET)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum" ,value = "页码（默认第一页）",defaultValue = "1",dataType = "String",paramType = "query",required = false),
             @ApiImplicitParam(name = "pageSize",value = "数量（默认每页10条）",defaultValue = "10",dataType = "String",paramType = "query",required = false)
@@ -36,5 +36,19 @@ public class UmsAdminController {
     public Object queryList(Integer pageNum,Integer pageSize){
         List<UmsAdmin> umsAdmins = adminService.queryList(pageNum, pageSize);
         return new CommonResult().pageSuccess(umsAdmins);
+    }
+
+    @ApiOperation("后台用户密码重置")
+    @RequestMapping(value = "/resetPassword",method = RequestMethod.POST)
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "adminId" ,value = "用户id",dataType = "String",paramType = "query",required = true),
+    })
+    @ResponseBody
+    public Object resetPassword(Long adminId){
+        int count = adminService.resetPassword(adminId);
+        if (count>0){
+            return new CommonResult().success();
+        }
+        return new CommonResult().failed();
     }
 }
