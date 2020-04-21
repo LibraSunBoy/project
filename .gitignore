@@ -12,9 +12,14 @@ HELP.md
 .sts4-cache
 
 ### IntelliJ IDEA ###
+**/src/test/**
+**/.mvn
+**/mvnw
+**/*.cmd
+**/target/**
 .idea
-*.iws
 *.iml
+*.iws
 *.ipr
 
 ### NetBeans ###
